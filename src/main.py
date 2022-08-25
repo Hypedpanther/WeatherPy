@@ -46,7 +46,7 @@ class App(tk.Tk):
 
     def get_weather(self): 
         self.enter_button.config(state="disabled")
-        with open("settings.json", "r") as jsonfile:
+        with open("src/settings.json", "r") as jsonfile:
             data = json.load(jsonfile)
             weather_api_key = data["weather_api_key"]
             base_url = data["weather_url"]
@@ -55,17 +55,17 @@ class App(tk.Tk):
                 r = resp.json()
             
         if r["cod"] != "404":
-            self.current_temperature = r["main"]["temp"]
-            self.current_pressure = r["main"]["pressure"]
-            self.current_humidity = r["main"]["humidity"]
-            self.weather_description = r["weather"][0]["description"]
+            current_temperature = r["main"]["temp"]
+            current_pressure = r["main"]["pressure"]
+            current_humidity = r["main"]["humidity"]
+            weather_description = r["weather"][0]["description"]
 
             self.results_label = tk.Label(self,
                     text=f"Weather in {self.location.get()}"  + "\n" +
-                    f"Temperature: {self.current_temperature}°C" + "\n" +
-                    f"Humidity: {self.current_humidity}%" + "\n" +
-                    f"Atmospheric Pressure: {self.current_pressure}hPa" + "\n" +
-                    f"Description: {self.weather_description}"+ "\n" +
+                    f"Temperature: {current_temperature}°C" + "\n" +
+                    f"Humidity: {current_humidity}%" + "\n" +
+                    f"Atmospheric Pressure: {current_pressure}hPa" + "\n" +
+                    f"Description: {weather_description}"+ "\n" +
                     f"Time: {datetime.now().strftime('%H:%M:%S')}")
         elif r["cod"] == "404":
             self.results_label = tk.Label(self,
