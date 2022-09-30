@@ -13,10 +13,16 @@ This is a simple weather app and the purpose was to learn and understand how to 
 1. Install Python 3.x
 2. Install Dependencies
    * Requests
+
    * tkinter
+   ```commandline
+   pip install tk requests
+   ```
 
 ### Setting up
 
 1. Add openweather map API key to settings.json file. ([openweathermap](https://home.openweathermap.org/users/sign_up))
 
 ## Run the script and Enjoy
+
+
